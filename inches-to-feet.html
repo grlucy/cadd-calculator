@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CADD Calculator</title>
+    <!-- Bootstrap CDN: -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="./styles/common.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-primary" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">CADD Calculator</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                >Inches to Feet</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./scale.html">Scale</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./curves.html">Curves</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section>
+      <div class="container mw-700px">
+        <h2 class="my-4">Inches to Decimal Feet</h2>
+        <form>
+          <div class="container text-center">
+            <div class="row align-items-start pb-3 border-bottom">
+              <div class="col-3">
+                <label for="decFtFrm-ftInput" class="form-label">Feet</label>
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="decFtFrm-ftInput"
+                  onchange="convertInchesToDecimalFeet()"
+                />
+              </div>
+              <div class="col-3">
+                <label for="decFtFrm-inInput" class="form-label">Inches</label>
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="decFtFrm-inInput"
+                  onchange="convertInchesToDecimalFeet()"
+                />
+              </div>
+              <div class="col-6">
+                <label for="decFtFrm-frcInput1" class="form-label"
+                  >Inch Fraction</label
+                >
+                <div class="container text-center">
+                  <div class="row">
+                    <div class="col-5">
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control"
+                        id="decFtFrm-frcInput1"
+                        onchange="convertInchesToDecimalFeet()"
+                      />
+                    </div>
+                    <div class="col-1"><h3>/</h3></div>
+                    <div class="col-5">
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control"
+                        id="decFtFrm-frcInput2"
+                        onchange="convertInchesToDecimalFeet()"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-end pt-3 pb-4">
+              <div class="col-3">
+                <label for="decFtFrm-decFtInput" class="form-label"
+                  >Decimal Feet</label
+                >
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="decFtFrm-decFtInput"
+                  onchange="convertDecimalFeetToInches()"
+                />
+              </div>
+              <div class="col-2">
+                <button
+                  id="decFtFrm-copyBtn"
+                  type="button"
+                  class="btn btn-light border border-dark-subtle"
+                  onclick="copyThatToClipboard('decFtFrm-decFtInput')"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="container text-center">
+            <div class="row row-cols-auto">
+              <div class="col">
+                <button
+                  id="decFtFrm-convertBtn"
+                  type="button"
+                  class="btn btn-info my-2"
+                >
+                  <b>Convert</b>
+                </button>
+              </div>
+              <div class="col">
+                <button
+                  id="decFtFrm-clearBtn"
+                  type="button"
+                  class="btn btn-warning my-2"
+                  onclick="clearInputs()"
+                >
+                  <b>Clear</b>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <div class="container mw-700px">
+        <h2 class="my-4">Inches to Feet and Inches</h2>
+        <form>
+          <div class="container text-center">
+            <div class="row align-items-end">
+              <div class="col-3">
+                <label for="ftFrm-inInput" class="form-label">Inches</label>
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  id="ftFrm-inInput"
+                  step="1"
+                  oninput="this.value = parseInt(this.value);"
+                  onchange="convertInchesToFeetAndInches()"
+                />
+              </div>
+              <div class="col-3">
+                <button
+                  id="ftFrm-convertBtn"
+                  type="button"
+                  class="btn btn-info"
+                >
+                  <b>Convert ></b>
+                </button>
+              </div>
+              <div class="col-3">
+                <label for="ftFrm-resInput" class="form-label">Feet</label>
+                <input
+                  min="0"
+                  class="form-control"
+                  id="ftFrm-resInput"
+                  readonly
+                />
+              </div>
+              <div class="col-3">
+                <button
+                  id="decFtFrm-copyBtn"
+                  type="button"
+                  class="btn btn-light border border-dark-subtle"
+                  onclick="copyThatToClipboard('ftFrm-resInput')"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div
+      id="copyToast"
+      class="toast align-items-center text-bg-light border-0 position-fixed top-0 end-0"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      data-bs-animation="true"
+      data-bs-autohide="true"
+      data-bs-delay="3500"
+    >
+      <div class="d-flex">
+        <div class="toast-body">Copied to clipboard.</div>
+        <button
+          type="button"
+          class="btn-close me-2 m-auto"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./scripts/clear-inputs.js"></script>
+    <script src="./scripts/inches-to-decimal-feet.js"></script>
+    <script src="./scripts/copy-to-clipboard.js"></script>
+  </body>
+</html>
