@@ -71,17 +71,31 @@ function convertDecimalFeetToInches() {
 }
 
 function convertInchesToFeetAndInches() {
-  const resInput = document.getElementById("ftFrm-resInput");
+  const resFtInput = document.getElementById("ftFrm-resFtInput");
+  const resInInput = document.getElementById("ftFrm-resInInput");
   let formIn = document.getElementById("ftFrm-inInput").value;
   formIn = isNaN(formIn) ? 0 : Number(formIn);
   if (!formIn) {
-    resInput.value = "";
+    resFtInput.value = "";
+    resInInput.value = "";
     return;
   }
 
   const feet = Math.floor(formIn / 12);
   const inches = formIn % 12;
-  const str = `${feet}'-${inches}"`;
 
-  resInput.value = str;
+  resFtInput.value = feet;
+  resInInput.value = inches;
+}
+
+function convertFeetAndInchesToInches() {
+  let formFt = document.getElementById("ftFrm-resFtInput")?.value;
+  formFt = isNaN(formFt) ? 0 : Number(formFt);
+  let formIn = document.getElementById("ftFrm-resInInput")?.value;
+  formIn = isNaN(formIn) ? 0 : Number(formIn);
+
+  const inches = formFt * 12 + formIn;
+
+  const inInput = document.getElementById("ftFrm-inInput");
+  inInput.value = inches;
 }

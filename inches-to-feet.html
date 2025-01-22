@@ -51,7 +51,7 @@
 
     <section>
       <div class="container mw-700px">
-        <h2 class="my-4">Inches & Decimal Feet</h2>
+        <h2 class="my-4">Inches ⇔ Decimal Feet</h2>
         <form>
           <div class="container text-left">
             <div class="row align-items-start pb-3 border-bottom">
@@ -159,46 +159,62 @@
 
     <section>
       <div class="container mw-700px">
-        <h2 class="my-4">Inches to Feet and Inches</h2>
+        <h2 class="my-4">Inches ⇔ Feet and Inches</h2>
         <form>
           <div class="container text-left">
-            <div class="row row-cols-auto align-items-end pb-4">
-              <div class="col-3">
+            <div class="row row-cols-auto align-items-end pb-3 border-bottom">
+              <div class="col-6">
                 <label for="ftFrm-inInput" class="form-label">Inches</label>
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control"
-                  id="ftFrm-inInput"
-                  step="1"
-                  oninput="this.value = parseInt(this.value);"
-                  onchange="convertInchesToFeetAndInches()"
-                />
-              </div>
-              <div class="col">
-                <button
-                  id="ftFrm-convertBtn"
-                  type="button"
-                  class="btn btn-info"
-                >
-                  <b>Convert ></b>
-                </button>
-              </div>
-              <div class="col-5">
-                <label for="ftFrm-resInput" class="form-label">Feet</label>
                 <div class="input-group">
                   <input
+                    type="number"
                     min="0"
                     class="form-control"
-                    id="ftFrm-resInput"
-                    readonly
-                    aria-describedby="resInput-copyBtn"
+                    id="ftFrm-inInput"
+                    step="1"
+                    aria-describedby="inInput-copyBtn"
+                    oninput="this.value = parseInt(this.value);"
+                    onchange="convertInchesToFeetAndInches()"
                   />
                   <button
                     class="btn btn-outline-secondary"
                     type="button"
+                    id="inInput-copyBtn"
+                    onclick="copyThatToClipboard('ftFrm-inInput')"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row row-cols-auto align-items-end pt-3 pb-4">
+              <div class="col-12">
+                <label for="ftFrm-resFtInput" class="form-label">Feet</label>
+                <div class="input-group">
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="ftFrm-resFtInput"
+                    oninput="this.value = parseInt(this.value);"
+                    onchange="convertFeetAndInchesToInches()"
+                  />
+                  <span class="input-group-text">ft.</span>
+                  <input
+                    min="0"
+                    type="number"
+                    class="form-control"
+                    id="ftFrm-resInInput"
+                    aria-describedby="resInput-copyBtn"
+                    oninput="this.value = parseInt(this.value);"
+                    onchange="convertFeetAndInchesToInches()"
+                  />
+                  <span class="input-group-text">in.</span>
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
                     id="resInput-copyBtn"
-                    onclick="copyThatToClipboard('ftFrm-resInput')"
+                    onclick="copyFeetAndInchesToClipboard('ftFrm-resFtInput', 'ftFrm-resInInput')"
                   >
                     Copy
                   </button>
@@ -208,10 +224,19 @@
             <div class="row row-cols-auto">
               <div class="col">
                 <button
+                  id="ftFrm-convertBtn"
+                  type="button"
+                  class="btn btn-info"
+                >
+                  <b>Convert</b>
+                </button>
+              </div>
+              <div class="col">
+                <button
                   id="ftFrm-clearBtn"
                   type="button"
-                  class="btn btn-warning my-2"
-                  onclick="clearInputsById(['ftFrm-inInput', 'ftFrm-resInput'])"
+                  class="btn btn-warning"
+                  onclick="clearInputsById(['ftFrm-inInput', 'ftFrm-resFtInput', 'ftFrm-resInInput'])"
                 >
                   <b>Clear</b>
                 </button>
@@ -249,7 +274,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="./scripts/clear-inputs.js"></script>
-    <script src="./scripts/inches-to-decimal-feet.js"></script>
+    <script src="./scripts/inches-and-feet.js"></script>
     <script src="./scripts/copy-to-clipboard.js"></script>
   </body>
 </html>
