@@ -62,6 +62,7 @@
                   min="0"
                   class="form-control"
                   id="decFtFrm-ftInput"
+                  oninput="this.value = parseInt(this.value);"
                   onchange="convertInchesToDecimalFeet()"
                 />
               </div>
@@ -72,6 +73,7 @@
                   min="0"
                   class="form-control"
                   id="decFtFrm-inInput"
+                  oninput="this.value = parseInt(this.value);"
                   onchange="convertInchesToDecimalFeet()"
                 />
               </div>
@@ -87,6 +89,7 @@
                         min="0"
                         class="form-control"
                         id="decFtFrm-frcInput1"
+                        oninput="this.value = parseInt(this.value);"
                         onchange="convertInchesToDecimalFeet()"
                       />
                     </div>
@@ -97,6 +100,7 @@
                         min="0"
                         class="form-control"
                         id="decFtFrm-frcInput2"
+                        oninput="this.value = parseInt(this.value);"
                         onchange="convertInchesToDecimalFeet()"
                       />
                     </div>
@@ -145,7 +149,7 @@
                   id="decFtFrm-clearBtn"
                   type="button"
                   class="btn btn-warning my-2"
-                  onclick="clearInputs()"
+                  onclick="clearInputsById(['decFtFrm-decFtInput', 'decFtFrm-ftInput', 'decFtFrm-inInput', 'decFtFrm-frcInput1', 'decFtFrm-frcInput2'])"
                 >
                   <b>Clear</b>
                 </button>
@@ -192,7 +196,7 @@
                   readonly
                 />
               </div>
-              <div class="col-3">
+              <div class="col-1">
                 <button
                   id="decFtFrm-copyBtn"
                   type="button"
