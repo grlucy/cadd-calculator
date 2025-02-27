@@ -55,54 +55,55 @@
         <form>
           <div class="container text-left">
             <div class="row align-items-start pb-3 border-bottom">
-              <div class="col-3">
-                <label for="decFtFrm-ftInput" class="form-label">Feet</label>
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control"
-                  id="decFtFrm-ftInput"
-                  oninput="this.value = parseInt(this.value);"
-                  onchange="convertInchesToDecimalFeet()"
-                />
-              </div>
-              <div class="col-3">
-                <label for="decFtFrm-inInput" class="form-label">Inches</label>
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control"
-                  id="decFtFrm-inInput"
-                  oninput="this.value = parseInt(this.value);"
-                  onchange="convertInchesToDecimalFeet()"
-                />
-              </div>
-              <div class="col-6">
-                <label for="decFtFrm-frcInput1" class="form-label"
-                  >Inch Fraction</label
+              <div class="col">
+                <label for="decFtFrm-ftInput" class="form-label"
+                  >Feet and Inches (with Fraction of an Inch)</label
                 >
-                <div class="row">
-                  <div class="col-5">
-                    <input
-                      type="number"
-                      min="0"
-                      class="form-control"
-                      id="decFtFrm-frcInput1"
-                      oninput="this.value = parseInt(this.value);"
-                      onchange="convertInchesToDecimalFeet()"
-                    />
-                  </div>
-                  <div class="col-1"><h3>/</h3></div>
-                  <div class="col-5">
-                    <input
-                      type="number"
-                      min="0"
-                      class="form-control"
-                      id="decFtFrm-frcInput2"
-                      oninput="this.value = parseInt(this.value);"
-                      onchange="convertInchesToDecimalFeet()"
-                    />
-                  </div>
+                <div class="input-group">
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="decFtFrm-ftInput"
+                    oninput="this.value = parseInt(this.value);"
+                    onchange="convertInchesToDecimalFeet()"
+                  />
+                  <span class="input-group-text">ft.</span>
+                  <input
+                    min="0"
+                    type="number"
+                    class="form-control"
+                    id="decFtFrm-inInput"
+                    oninput="this.value = parseInt(this.value);"
+                    onchange="convertInchesToDecimalFeet()"
+                  />
+                  <span class="input-group-text">in.</span>
+                  <input
+                    min="0"
+                    type="number"
+                    class="form-control"
+                    id="decFtFrm-frcInput1"
+                    oninput="this.value = parseInt(this.value);"
+                    onchange="convertInchesToDecimalFeet()"
+                  />
+                  <span class="input-group-text">/</span>
+                  <input
+                    min="0"
+                    type="number"
+                    class="form-control"
+                    id="decFtFrm-frcInput2"
+                    aria-describedby="decInInput-copyBtn"
+                    oninput="this.value = parseInt(this.value);"
+                    onchange="convertInchesToDecimalFeet()"
+                  />
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="decInInput-copyBtn"
+                    onclick="copyFeetAndInchesToClipboard('decFtFrm-ftInput', 'decFtFrm-inInput', 'decFtFrm-frcInput1', 'decFtFrm-frcInput2')"
+                  >
+                    Copy
+                  </button>
                 </div>
               </div>
             </div>

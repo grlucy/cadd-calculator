@@ -19,6 +19,7 @@ function convertInchesToDecimalFeet() {
   // Convert decimal inches to decimal feet
   const decFt = Number(formFt + decIn / 12).toFixed(6);
 
+  // Update form values
   const resultInput = document.getElementById("decFtFrm-decFtInput");
   resultInput.value = decFt;
 }
@@ -59,7 +60,7 @@ function convertDecimalFeetToInches() {
     }
   }
 
-  // Update input values
+  // Update form values
   const ftInput = document.getElementById("decFtFrm-ftInput");
   ftInput.value = feet || "";
   const inInput = document.getElementById("decFtFrm-inInput");
