@@ -40,7 +40,9 @@
               <a class="nav-link" href="./scale.html">Scale</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Curves</a>
+              <a class="nav-link active" aria-current="page" href="#"
+                >Degrees</a
+              >
             </li>
           </ul>
         </div>
@@ -49,7 +51,106 @@
 
     <section>
       <div class="container mw-700px">
-        <h2 class="my-4">Curves</h2>
+        <h2 class="my-4">Decimal Degrees ⇔ Degrees, Minutes, Seconds</h2>
+        <form>
+          <div class="container text-left">
+            <div class="row align-items-end pb-3 border-bottom">
+              <div class="col-7">
+                <label for="dmsFrm-decDegInput" class="form-label"
+                  >Degrees</label
+                >
+                <div class="input-group">
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="dmsFrm-decDegInput"
+                    aria-describedby="decDegInput-copyBtn"
+                    onchange="convertDecimalDegreesToDMS(this.value)"
+                  />
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="decDegInput-copyBtn"
+                    onclick="copyThatToClipboard('dmsFrm-decDegInput')"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-end pt-3 pb-4">
+              <div class="col">
+                <label for="dmsForm-degInput" class="form-label"
+                  >Degrees, Minutes, Seconds</label
+                >
+                <div class="input-group">
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="dmsForm-degInput"
+                    oninput="this.value = parseInt(this.value);"
+                    onchange="convertDMSToDecimalDegrees()"
+                  />
+                  <span class="input-group-text">°</span>
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="dmsForm-minInput"
+                    oninput="this.value = parseInt(this.value);"
+                    onchange="convertDMSToDecimalDegrees()"
+                  />
+                  <span class="input-group-text">'</span>
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="dmsForm-secInput"
+                    onchange="convertDMSToDecimalDegrees()"
+                  />
+                  <span class="input-group-text">"</span>
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="secInput-copyBtn"
+                    onclick="copyDegreesMinutesSecondsToClipboard('dmsForm-degInput', 'dmsForm-minInput', 'dmsForm-secInput')"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row row-cols-auto">
+              <div class="col">
+                <button
+                  id="dmsFrm-convertBtn"
+                  type="button"
+                  class="btn btn-info my-2"
+                >
+                  <b>Convert</b>
+                </button>
+              </div>
+              <div class="col">
+                <button
+                  id="dmsFrm-clearBtn"
+                  type="button"
+                  class="btn btn-warning my-2"
+                  onclick="clearInputsById(['dmsFrm-decDegInput', 'dmsForm-degInput', 'dmsForm-minInput', 'dmsForm-secInput'])"
+                >
+                  <b>Clear</b>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <div class="container mw-700px">
+        <h2 class="my-4">Curve Degrees ⇔ Radius</h2>
         <form>
           <div class="container text-left">
             <div class="row align-items-end pb-3 border-bottom">

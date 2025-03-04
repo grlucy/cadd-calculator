@@ -25,3 +25,16 @@ function copyFeetAndInchesToClipboard(ftId, inId, fracNumId, fracDenId) {
   navigator.clipboard.writeText(copyStr);
   toastBootstrap.show();
 }
+
+function copyDegreesMinutesSecondsToClipboard(degId, minId, secId) {
+  const degElement = document.getElementById(degId);
+  const minElement = document.getElementById(minId);
+  const secElement = document.getElementById(secId);
+
+  const copyStr = `${degElement.value || 0}°${minElement.value || 0}'${
+    secElement.value || 0
+  }"`;
+
+  navigator.clipboard.writeText(copyStr);
+  toastBootstrap.show();
+}
